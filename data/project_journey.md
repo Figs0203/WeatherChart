@@ -67,7 +67,8 @@ We investigated relationships between features.
 | `9-join_economy.py` | **Join** | Merges economic data. |
 | `10-process_latitude.py` | **Data Prep** | **Manual Fix for Hong Kong**, selects Lat/Long. |
 | `11-join_latitude.py` | **Join** | Merges geographic/education data. |
-| `12-eda.py` | **Analysis** | Generates stats and the plots shown above. |
+| `12-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
+| `13-eda.py` | **Analysis** | Generates stats and the plots shown above. |
 
 ## 5. Next Steps: Modeling
 We are now ready to clean ID features and train an **XGBoost Classifier** to predict `track_genre`.
