@@ -1,0 +1,24 @@
+# Data Files
+data/
+*.csv
+*.parquet
+*.json
+*.pkl
+
+# Plots
+plots/
+*.png
+*.jpg
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
