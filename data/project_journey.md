@@ -52,7 +52,27 @@ We investigated relationships between features.
 ![Audio Features](../plots/dist_audio_features.png)
 *Distributions of key audio features like Danceability and Energy.*
 
-## 4. File Guide & Architecture
+## 4. ML Preprocessing (Phase 5)
+We built `13-preprocess.py` — a complete ML preprocessing pipeline applied to a **2M row sample**.
+
+### Pipeline Steps
+1.  **Drop Identifiers**: Removed `title`, `date`, `artist` (not predictive).
+2.  **Target Engineering**: Extracted the **primary genre** from stringified lists (e.g., `"['pop', 'rock']"` → `'pop'`). Found **109 unique genres**, filtered to **86** (removed 23 with < 500 samples).
+3.  **Categorical Encoding**: `LabelEncoder` for `region` (65 values) and `continent` (6 values).
+4.  **Stratified Split**: 80/20 train/test (1,598,212 / 399,554 rows), verified equal class distributions.
+5.  **Feature Scaling**: `StandardScaler` fit on train only, applied to test (no data leakage).
+6.  **Output**: Saved as Parquet files + `preprocessing_artifacts.pkl` for reproducibility.
+
+### Key Results
+| Metric | Value |
+| :--- | :--- |
+| Final rows | 1,997,766 |
+| Train / Test | 1,598,212 / 399,554 |
+| Features | 20 |
+| Target classes | 86 genres |
+| Top genre | pop (33.2%) |
+
+## 5. File Guide & Architecture
 
 | Script | Purpose | Key Logic |
 | :--- | :--- | :--- |
@@ -62,13 +82,13 @@ We investigated relationships between features.
 | `4-analyze_missing.py` | **QA** | Checks which artists failed to match. |
 | `5-process_climate.py` | **Data Prep** | Cleans temp data (1970+), calculates monthly avgs. |
 | `6-join_climate.py` | **Join** | Merges climate data by Country/Month. |
-| `7-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
 | `7-process_countries.py` | **Data Prep** | Selects GDP/Population columns. |
 | `8-join_economy.py` | **Join** | Merges economic data. |
 | `9-process_latitude.py` | **Data Prep** | **Manual Fix for Hong Kong**, selects Lat/Long. |
 | `10-join_latitude.py` | **Join** | Merges geographic/education data. |
 | `11-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
 | `12-eda.py` | **Analysis** | Generates stats and the plots shown above. |
+| `13-preprocess.py` | **ML Preprocessing** | Encoding, scaling, stratified split, Parquet output. |
 
-## 5. Next Steps: Modeling
-We are now ready to clean ID features and train an **XGBoost Classifier** to predict `track_genre`.
+## 6. Next Steps: Model Training
+Data is preprocessed and ready. Next: train an **XGBoost Classifier** (`14-train_model.py`) to predict `primary_genre` from 20 features across 86 classes.
