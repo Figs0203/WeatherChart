@@ -63,12 +63,12 @@ We investigated relationships between features.
 | `5-process_climate.py` | **Data Prep** | Cleans temp data (1970+), calculates monthly avgs. |
 | `6-join_climate.py` | **Join** | Merges climate data by Country/Month. |
 | `7-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
-| `8-process_countries.py` | **Data Prep** | Selects GDP/Population columns. |
-| `9-join_economy.py` | **Join** | Merges economic data. |
-| `10-process_latitude.py` | **Data Prep** | **Manual Fix for Hong Kong**, selects Lat/Long. |
-| `11-join_latitude.py` | **Join** | Merges geographic/education data. |
-| `12-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
-| `13-eda.py` | **Analysis** | Generates stats and the plots shown above. |
+| `7-process_countries.py` | **Data Prep** | Selects GDP/Population columns. |
+| `8-join_economy.py` | **Join** | Merges economic data. |
+| `9-process_latitude.py` | **Data Prep** | **Manual Fix for Hong Kong**, selects Lat/Long. |
+| `10-join_latitude.py` | **Join** | Merges geographic/education data. |
+| `11-create_training_set.py` | **Final Generation** | Filters nulls, creates `train_dataset.csv`. |
+| `12-eda.py` | **Analysis** | Generates stats and the plots shown above. |
 
 ## 5. Next Steps: Modeling
 We are now ready to clean ID features and train an **XGBoost Classifier** to predict `track_genre`.

@@ -6,7 +6,7 @@ input_file = 'd:/Clase-fundamentos-aprendizaje-automatico/WeatherChart/data/fina
 output_file = 'd:/Clase-fundamentos-aprendizaje-automatico/WeatherChart/data/train_dataset.csv'
 
 if not os.path.exists(input_file):
-    print(f"Error: {input_file} not found. Ensure 11-join_latitude.py completed successfully.")
+    print(f"Error: {input_file} not found. Ensure 10-join_latitude.py completed successfully.")
     exit(1)
 
 print("Loading final_dataset_v4.csv...")

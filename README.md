@@ -43,9 +43,9 @@ The project follows a linear pipeline (scripts `1-` to `12-`).
 | **1. Preparation** | Filters raw ~3.5GB charts file. | `1-filter_charts.py` |
 | **2. Integration** | Maps artists to genres using a "Smart Join" strategy. | `3-join_datasets.py` |
 | **3. Climate** | Adds monthly avg temperatures (1970+). | `5-process_climate.py`, `6-join_climate.py` |
-| **4. Socio/Geo** | Adds GDP, Population, Lat/Long. Recovered missing HK data. | `9-join_economy.py`, `11-join_latitude.py` |
-| **5. Final Data** | Creates final training set from integrated data. | `12-create_training_set.py` |
-| **6. Analysis** | Generates stats and visualizations. | `13-eda.py` |
+| **4. Socio/Geo** | Adds GDP, Population, Lat/Long. Recovered missing HK data. | `8-join_economy.py`, `10-join_latitude.py` |
+| **5. Final Data** | Creates final training set from integrated data. | `11-create_training_set.py` |
+| **6. Analysis** | Generates stats and visualizations. | `12-eda.py` |
 
 ## 📊 Key Insights (EDA)
 - **Global Coverage**: 68 Countries.
