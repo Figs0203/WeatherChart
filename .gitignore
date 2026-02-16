@@ -5,12 +5,6 @@ data/
 *.json
 *.pkl
 
-# Plots
-plots/
-*.png
-*.jpg
-*.pdf
-
 # Python
 __pycache__/
 *.py[cod]
