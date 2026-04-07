@@ -359,6 +359,13 @@ def main():
     full_cluster_labels = mbkm.fit_predict(X_full)
     new_labels, n_changed = relabel_by_majority(full_cluster_labels, y_train_full)
     
+    # --- NEW: Generate plots illustrating the new clean relabeled dataset compared to the original ---
+    new_labels_sample = new_labels[idx_main]
+    plot_3d_clusters(pca_3d, new_labels_sample, 'PCA 3D — Re-labeled (Cleaned) Labels', os.path.join(PLOTS_DIR, 'clustering_pca3d_relabeled.png'))
+    plot_2d_clusters(umap_2d, new_labels_sample, 'UMAP 2D — Re-labeled (Cleaned) Labels', os.path.join(PLOTS_DIR, 'clustering_umap_relabeled.png'), 'UMAP1', 'UMAP2')
+    plot_2d_clusters(pca_2d, new_labels_sample, 'PCA 2D — Re-labeled (Cleaned) Labels', os.path.join(PLOTS_DIR, 'clustering_pca2d_relabeled.png'), 'PC1', 'PC2')
+    log("  Saved: Re-labeled 3D and UMAP plots for Final Presentation.")
+    
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
     axes[0].pie([len(y_train_full) - n_changed, n_changed], labels=['Unchanged', 'Re-labeled'], autopct='%1.1f%%', colors=['#2ecc71', '#e74c3c'])
     axes[0].set_title('Label Re-evaluation Summary', fontweight='bold')
